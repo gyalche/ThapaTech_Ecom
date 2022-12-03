@@ -1,0 +1,93 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { FiShoppingCart } from 'react-icons/fi';
+const Nav = () => {
+  return (
+    <Navbar>
+      <div className="navbar">
+        <ul className="navbar-lists">
+          <li>
+            <NavLink to="/" className="navbar-link home-link">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/about" className="navbar-link home-link">
+              About
+            </NavLink>
+          </li>
+          <NavLink to="/products" className="navbar-link home-link">
+            Products
+          </NavLink>
+          <li>
+            <NavLink to="/contact" className="navbar-link home-link">
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/cart" className="navbar-link cart-trolley--link">
+              <FiShoppingCart className="cart-trolley" />
+              <span className="cart-total--item">32</span>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </Navbar>
+  );
+};
+
+const Navbar = styled.nav`
+  .mobile-nav-icon[name='close-outline'] {
+    display: none;
+  }
+  .close-outline {
+    display: none;
+  }
+  .caart-trolley--link {
+    position: relative;
+    .cart-trolley {
+      positon: relative;
+      font-size: 3.2rem;
+    }
+    .cart-total--item {
+      width: 2.4rem;
+      height: 2.4rem;
+      position: absolute;
+      background-color: #000;
+      color: #000;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      top: -20%;
+      left: 70%;
+      background-color: ${({ theme }) => theme.colors.helper};
+    }
+  }
+
+  .navbar-lists {
+    display: flex;
+    gap: 4.8rem;
+    align-items: center;
+
+    .navbar-link {
+      &:link,
+      &:visited {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 1.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: ${({ theme }) => theme.colors.black};
+        transition: color 0.3s linear;
+
+        &:hover,
+        &:active {
+          color: ${({ theme }) => theme.colors.helper};
+        }
+      }
+    }
+  }
+`;
+
+export default Nav;
